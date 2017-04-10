@@ -17,12 +17,27 @@ public class Team {
     return this.name;
   }
 
-  // public int lineupLength() {
-  //   count = 0
-  //   for Player lineup if != null
-  //     count++;
-  //   }
-  //   return count;
-  // }
+  public int lineupLength() {
+    int count = 0;
+    for(Player player : this.lineup){
+      if(player != null){
+        count++;
+      }
+    }
+    return count;
+  }
+
+  public void addPlayer(Player player) {
+    if(isTeamFull() ){
+      return;
+    }
+
+    int lineupLength = lineupLength();
+    this.lineup[lineupLength] = player;
+  }
+
+  public boolean isTeamFull() {
+    return lineupLength() == lineup.length;
+  }
 
 }

@@ -22,8 +22,23 @@ public class TeamTest {
   }
 
   @Test
-  public void lineupLength() {
-    assertEquals(15, team.lineupLength);
+  public void teamStartsEmpty() {
+    assertEquals(0, team.lineupLength() );
+  }
+
+  @Test
+  public void lineupLengthis2() {
+    this.team.addPlayer(this.player);
+    this.team.addPlayer(this.player);
+    assertEquals(2, team.lineupLength() );
+  }
+
+  @Test
+  public void maxlengthis15() {
+    for(int i=0; i<49; i++){
+      this.team.addPlayer(player);
+    }
+    assertEquals(15, team.lineupLength() );
   }
 
 }
