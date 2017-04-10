@@ -4,11 +4,13 @@ import org.junit.*;
 public class TeamTest {
   Team team;
   Player player;
+  Substitute sub;
 
   @Before
   public void before() {
     this.team = new Team("Harlequins");
     player = new Player();
+    sub = new Substitute();
   }
 
   @Test
@@ -34,11 +36,24 @@ public class TeamTest {
   }
 
   @Test
-  public void maxlengthis15() {
-    for(int i=0; i<49; i++){
+  public void maxLengthIs15() {
+    for(int i=0; i<42; i++){
       this.team.addPlayer(player);
     }
     assertEquals(15, team.lineupLength() );
   }
 
+  @Test
+  public void sentOffTeamLengthIs14() {
+    for(int i=0; i<15; i++){
+      this.team.addPlayer(player);
+    }
+    this.team.sentOff(this.player);
+    assertEquals(14, team.lineupLength() );
+  }
+
+  @Test
+  public void benchLength7() {
+    assertEquals(7, sub.benchLength() );
+  }
 }
